@@ -1,5 +1,0 @@
-back
-boy
-girl
-man
-woman
