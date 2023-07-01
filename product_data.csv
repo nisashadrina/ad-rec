@@ -1,0 +1,13 @@
+product_id,product_name,product_priority,category_id,category_name,class,category_priority
+3,Robot Transformer,5,8,Mainan Anak Laki-laki,0,5
+7,Lego,5,8,Mainan Anak Laki-laki,0,5
+0,Boneka Barbie,5,9,Mainan Anak Perempuan,1,5
+6,Silverqueen,4,11,Makanan Ringan,1,5
+1,Sunscreen Azarine,3,5,Kecantikan,3,5
+2,Jam Tangan Rolex,1,0,Aksesoris Fashion,2,2
+4,Sarung Wadimor,2,31,Sarung,2,4
+5,Wardah Exclusive,1,5,Kecantikan,3,5
+8,Gillete,4,26,Perawatan Pria,2,5
+9,Fortune Minyak Goreng,5,7,Keperluan Rumah Tangga,3,4
+7,Lego,2,8,Mainan Anak Laki-laki,2,1
+6,Silverqueen,4,11,Makanan Ringan,3,2
