@@ -225,4 +225,4 @@ def video_feed():
     return Response(produceVideo(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
-    app.run(debug=True, port = 9011, host='0.0.0.0')
+    app.run(debug=True, port = 8079, host='0.0.0.0')
