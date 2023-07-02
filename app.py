@@ -140,7 +140,7 @@ def produceVideo():
             break
             
         # Resize ukuran frame
-        frame = cv2.resize(frame, (640, 360))
+        frame = cv2.resize(frame, (1280, 720))
 
         # Memanggil model recognition dan model tracker
         results = model.track(frame, conf = 0.65, persist=True, tracker="botsort.yaml")
