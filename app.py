@@ -205,18 +205,20 @@ def produceVideo():
             # Reset variabel waktu
             START_TIME = time.time()
         
-        cv2.putText(frame, "boy counted: " + str(count_boy), (60, 90), cv2.FONT_HERSHEY_COMPLEX, (0.8), (0, 255, 0), 2)
-        cv2.putText(frame, "girl counted: " + str(count_girl), (60, 120), cv2.FONT_HERSHEY_COMPLEX, (0.8), (255, 255, 0), 2)
-        cv2.putText(frame, "man counted: " + str(count_man), (60, 150), cv2.FONT_HERSHEY_COMPLEX, (0.8), (0, 255, 255), 2)
-        cv2.putText(frame, "woman counted: " + str(count_woman), (60, 180), cv2.FONT_HERSHEY_COMPLEX, (0.8), (255, 0, 255), 2)
-        cv2.putText(frame, "Advertisement: " + str(ad_product), (800, 60), cv2.FONT_HERSHEY_COMPLEX, (0.7), (0, 0, 0), 2)
-        cv2.putText(frame, "Advertisement: " + str(ad_product), (800, 60), cv2.FONT_HERSHEY_COMPLEX, (0.65), (255, 255, 255), 2)
+        cv2.putText(frame, "boy counted: " + str(count_boy), (60, 90), cv2.FONT_HERSHEY_COMPLEX, (0.7), (0, 255, 0), 2)
+        cv2.putText(frame, "girl counted: " + str(count_girl), (60, 120), cv2.FONT_HERSHEY_COMPLEX, (0.7), (255, 255, 0), 2)
+        cv2.putText(frame, "man counted: " + str(count_man), (60, 150), cv2.FONT_HERSHEY_COMPLEX, (0.7), (0, 255, 255), 2)
+        cv2.putText(frame, "woman counted: " + str(count_woman), (60, 180), cv2.FONT_HERSHEY_COMPLEX, (0.7), (255, 0, 255), 2)
+        cv2.putText(frame, "Advertisement: " + str(ad_product), (800, 60), cv2.FONT_HERSHEY_COMPLEX, (0.6), (0, 0, 0), 2)
 
         ret, buffer = cv2.imencode('.jpg', frame)
         frame = buffer.tobytes()
     
         # Menggabungkan frame
         yield (b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+
+        # Jeda selama 1/30 detik
+        time.sleep(1/30)
 
 @app.route('/')
 def index():
