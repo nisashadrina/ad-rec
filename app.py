@@ -15,7 +15,7 @@ app = Flask(__name__)
 # Inisialisasi global variable
 #     Inisialisasi path
 VIDEO_PATH = 'test-5.mp4'
-MODEL_PATH = 'model/best.pt'
+MODEL_PATH = 'models/best-yolov8m.pt'
 CLASS_PATH = 'classes.txt'
 
 # Inisialisasi data iklan
@@ -131,9 +131,6 @@ def produceVideo():
 
     # Inisialisasi video
     cap = cv2.VideoCapture(VIDEO_PATH)
-    
-    frame_rate = 30  # Frame rate target (30 fps)
-    delay = int(1000 / frame_rate)  # Delay waktu dalam ms
 
     while cap.isOpened():
         success, frame = cap.read()
@@ -218,9 +215,6 @@ def produceVideo():
     
         # Menggabungkan frame
         yield (b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
-    
-        # Tunggu delay waktu sebelum mengambil frame berikutnya
-        cv2.waitKey(delay)
 
 @app.route('/')
 def index():

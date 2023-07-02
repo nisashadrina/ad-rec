@@ -1,32 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Streaming Adaptif</title>
-  <link href="https://unpkg.com/video.js/dist/video-js.min.css" rel="stylesheet">
-  <script src="https://unpkg.com/video.js/dist/video.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-</head>
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2">
-        <h3 class="mt-5">Ad Recommender</h3>
-        <video id="my-video" class="video-js vjs-default-skin" controls autoplay width="100%"></video>
-      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h3 class="mt-5">Ad-Recommender</h3>
+                <canvas id="videoCanvas" width="1280" height="720"></canvas>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <script>
-    var video = videojs('my-video');
-    var hls = new Hls();
-    var manifestUrl = '{{ url_for("video_feed") }}';
+    <script>
+        // Mengambil elemen canvas
+        const canvas = document.getElementById('videoCanvas');
+        const ctx = canvas.getContext('2d');
 
-    if (Hls.isSupported()) {
-      hls.loadSource(manifestUrl);
-      hls.attachMedia(video);
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-      video.src = manifestUrl;
-    }
-  </script>
+        // Membuat sambungan WebSocket ke server
+        const socket = new WebSocket('ws://' + window.location.host + '/video_feed');
+
+        // Menangani pesan yang diterima dari server
+        socket.onmessage = function (event) {
+            const img = new Image();
+            img.onload = function () {
+                // Menggambar setiap frame yang diterima ke canvas
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            };
+            img.src = URL.createObjectURL(event.data);
+        };
+    </script>
 </body>
-</html>
