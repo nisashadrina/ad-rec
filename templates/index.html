@@ -1,29 +1,10 @@
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2">
-                <h3 class="mt-5">Ad-Recommender</h3>
-                <canvas id="videoCanvas" width="1280" height="720"></canvas>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8  offset-lg-2">
+            <h3 class="mt-5">Ad-Recommender</h3>
+            <img src="{{ url_for('video_feed') }}" width="100%">
         </div>
     </div>
-
-    <script>
-        // Mengambil elemen canvas
-        const canvas = document.getElementById('videoCanvas');
-        const ctx = canvas.getContext('2d');
-
-        // Membuat sambungan WebSocket ke server
-        const socket = new WebSocket('ws://' + window.location.host + '/video_feed');
-
-        // Menangani pesan yang diterima dari server
-        socket.onmessage = function (event) {
-            const img = new Image();
-            img.onload = function () {
-                // Menggambar setiap frame yang diterima ke canvas
-                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-            };
-            img.src = URL.createObjectURL(event.data);
-        };
-    </script>
+</div>
 </body>
