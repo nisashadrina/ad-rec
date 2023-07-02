@@ -1,13 +1,23 @@
 product_id,product_name,product_priority,category_id,category_name,class,category_priority
 3,Robot Transformer,5,8,Mainan Anak Laki-laki,0,5
 7,Lego,5,8,Mainan Anak Laki-laki,0,5
+433, Printed backpack   ,4,16,Pakaian Anak Laki-laki,0,4
+175,Pringles Snack Kentang Original,4,11,Makanan Ringan,0,5
+28,Fire Truck Set Toy,3,8,Mainan Anak Laki-laki,0,5
 0,Boneka Barbie,5,9,Mainan Anak Perempuan,1,5
 6,Silverqueen,4,11,Makanan Ringan,1,5
-1,Sunscreen Azarine,3,5,Kecantikan,3,5
+35,Mainan Kitchen Set,4,9,Mainan Anak Perempuan,1,5
+671,Pepsodent Sweet Strawberry,5,25,Perawatan Gigi dan Mulut,1,3
+2831,Kodomo Shampoo Gel Cherry,3,24,Perawatan Bayi,1,3
 2,Jam Tangan Rolex,1,0,Aksesoris Fashion,2,2
 4,Sarung Wadimor,2,31,Sarung,2,4
-5,Wardah Exclusive,1,5,Kecantikan,3,5
 8,Gillete,4,26,Perawatan Pria,2,5
-9,Fortune Minyak Goreng,5,7,Keperluan Rumah Tangga,3,4
 7,Lego,2,8,Mainan Anak Laki-laki,2,1
+3774,Celana Pendek Casual,5,19,Pakaian Pria,2,5
+3903,Nivea Men Pelembab Wajah,3,26,Perawatan Pria,2,5
+1,Sunscreen Azarine,3,5,Kecantikan,3,5
+5,Wardah Exclusive,1,5,Kecantikan,3,5
+9,Fortune Minyak Goreng,5,7,Keperluan Rumah Tangga,3,4
 6,Silverqueen,4,11,Makanan Ringan,3,2
+3309,Laurier Flexi Protect Non Wing,3,29,Produk Kewanitaan,3,5
+2844,Mitu Baby Tisu Basah,2,24,Perawatan Bayi,3,3
