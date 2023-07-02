@@ -26,10 +26,11 @@ model = YOLO(MODEL_PATH)
 
 #     Inisialisasi area
 AREA = [
-    (493, 387),
-    (797, 343),
-    (853, 391),
-    (489, 475)
+    (493, 401),
+    (813, 353),
+    (925, 417),
+    (529, 541),
+    (489, 489)
 ]
 
 AREA = np.array(AREA, dtype=np.int32)
@@ -139,7 +140,7 @@ def produceVideo():
             break
             
         # Resize ukuran frame
-        frame = cv2.resize(frame, (1280, 720))
+        frame = cv2.resize(frame, (640, 360))
 
         # Memanggil model recognition dan model tracker
         results = model.track(frame, conf = 0.65, persist=True, tracker="botsort.yaml")
@@ -209,6 +210,7 @@ def produceVideo():
         cv2.putText(frame, "man counted: " + str(count_man), (60, 150), cv2.FONT_HERSHEY_COMPLEX, (0.8), (0, 255, 255), 2)
         cv2.putText(frame, "woman counted: " + str(count_woman), (60, 180), cv2.FONT_HERSHEY_COMPLEX, (0.8), (255, 0, 255), 2)
         cv2.putText(frame, "Advertisement: " + str(ad_product), (800, 60), cv2.FONT_HERSHEY_COMPLEX, (0.7), (0, 0, 0), 2)
+        cv2.putText(frame, "Advertisement: " + str(ad_product), (800, 60), cv2.FONT_HERSHEY_COMPLEX, (0.65), (255, 255, 255), 2)
 
         ret, buffer = cv2.imencode('.jpg', frame)
         frame = buffer.tobytes()
