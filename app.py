@@ -152,7 +152,12 @@ def produceVideo():
         # Keluar dari loop jika sudah mencapai akhir video
         if not success:
             break
-            
+
+        # Untuk menghitung fps
+        current_time = time.time()
+        fps = 1 / (current_time - prev_time)
+        prev_time = current_time
+
         # Resize ukuran frame
         frame = cv2.resize(frame, (1280, 720))
 
@@ -224,6 +229,8 @@ def produceVideo():
         cv2.putText(frame, "man counted: " + str(count_man), (60, 150), cv2.FONT_HERSHEY_COMPLEX, (0.7), (0, 255, 255), 2)
         cv2.putText(frame, "woman counted: " + str(count_woman), (60, 180), cv2.FONT_HERSHEY_COMPLEX, (0.7), (255, 0, 255), 2)
         cv2.putText(frame, "Advertisement: " + str(ad_product), (800, 60), cv2.FONT_HERSHEY_COMPLEX, (0.6), (0, 0, 0), 2)
+        cv2.putText(frame, "FPS: " + str(int(fps)), (800, 600), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
+
 
         ret, buffer = cv2.imencode('.jpg', frame)
         frame = buffer.tobytes()
