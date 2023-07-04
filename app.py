@@ -130,19 +130,14 @@ def maxCondition(array):
     max_class = argmax_unique(array)
 
     if boy != 0 and girl == 0:
-        print("a")
         return 0
     elif girl != 0 and boy == 0:
-        print("b")
         return 1
     elif boy != 0 and girl != 0:
-        print("c")
         return 4
     elif max_class is None:
-        print("d")
         return 5
     else:
-        print("e")
         return max_class
 
 def produceVideo():
