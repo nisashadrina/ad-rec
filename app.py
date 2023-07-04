@@ -48,7 +48,7 @@ woman_detected = set()
     
 #      Inisialisasi variabel waktu
 START_TIME = time.time()
-TIME_TO_RESET = 3
+TIME_TO_RESET = 5
 
 # Function untuk mengetahui informasi video
 def getVideoInfo(video_path):
@@ -73,6 +73,25 @@ def createScore(data):
 
     return data
 
+def probability(data_res):
+    # Menghitung total skor
+    total_score = data_res['score'].sum()
+
+    # Menghitung peluang kemunculan untuk setiap produk
+    data_res['probability'] = data_res['score'] / total_score
+
+    # Membuat daftar produk berdasarkan peluang kemunculan
+    products = data_res['product_id'].tolist()
+    probabilities = data_res['probability'].tolist()
+
+    # Menggunakan metode random.choices untuk melakukan randomisasi dengan mempertimbangkan peluang kemunculan
+    recommended_products = random.choices(products, probabilities, k=1)
+
+    product = data.loc[data['product_id'] == recommended_products[0]]
+    prod_name = product['product_name'].values[0]
+
+    return prod_name
+
 def randomAd(max_class):
     global prod_data
     
@@ -83,27 +102,19 @@ def randomAd(max_class):
         recommended_products = random.choice(random_product)
 
         product = data.loc[data['product_id'] == recommended_products[0]]
+    elif max_class == 5:
+        result = data.loc[data['class'] == 0]
+        result2 = data.loc[data['class'] == 1]
+
+        combined_result = pd.concat([result, result2])
+        
+        product_name = probability(combined_result)
+
     else:
         result = data.loc[data['class'] == max_class]
+        product_name = probability(result)        
 
-        # Menghitung total skor
-        total_score = result['score'].sum()
-
-        # Menghitung peluang kemunculan untuk setiap produk
-        result['probability'] = result['score'] / total_score
-
-        # Membuat daftar produk berdasarkan peluang kemunculan
-        products = result['product_id'].tolist()
-        probabilities = result['probability'].tolist()
-
-        # Menggunakan metode random.choices untuk melakukan randomisasi dengan mempertimbangkan peluang kemunculan
-        recommended_products = random.choices(products, probabilities, k=1)
-
-        product = data.loc[data['product_id'] == recommended_products[0]]
-
-    prod_name = product['product_name'].values[0]
-
-    return prod_name
+    return product_name
 
 def argmax_unique(array):
     max_index = np.argmax(array)
@@ -117,10 +128,12 @@ def maxCondition(array):
 
     max_class = argmax_unique(array)
 
-    if boy != 0:
+    if boy != 0 and girl == 0:
         return 0
-    elif girl != 0:
+    elif girl != 0 and boy == 0:
         return 1
+    elif boy != 0 and girl != 0:
+        return 5
     elif max_class is None:
         return 4
     else:
