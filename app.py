@@ -97,13 +97,13 @@ def randomAd(max_class):
     
     data = createScore(prod_data)
     
-    if max_class == 4:
+    if max_class == 5:
         random_product = data['product_id'].tolist()
         recommended_products = random.choice(random_product)
         product = data.loc[data['product_id'] == recommended_products[0]]
         product_name = product['product_name'].values[0]
 
-    elif max_class == 5:
+    elif max_class == 4:
         result = data.loc[data['class'] == 0]
         result2 = data.loc[data['class'] == 1]
 
@@ -130,20 +130,26 @@ def maxCondition(array):
     max_class = argmax_unique(array)
 
     if boy != 0 and girl == 0:
+        print("a")
         return 0
     elif girl != 0 and boy == 0:
+        print("b")
         return 1
     elif boy != 0 and girl != 0:
-        return 5
-    elif max_class is None:
+        print("c")
         return 4
+    elif max_class is None:
+        print("d")
+        return 5
     else:
+        print("e")
         return max_class
 
 def produceVideo():
     global VIDEO_PATH, model, AREA, CLASS_LIST, START_TIME, TIME_TO_RESET, data
     global boy_detected, girl_detected, man_detected, woman_detected
     fps = 0
+    ad_product = "None"
     prev_time = time.time()
 
     # Inisialisasi video
