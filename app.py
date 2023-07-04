@@ -230,8 +230,8 @@ def produceVideo():
         cv2.putText(frame, "girl counted: " + str(count_girl), (60, 120), cv2.FONT_HERSHEY_COMPLEX, (0.7), (255, 255, 0), 2)
         cv2.putText(frame, "man counted: " + str(count_man), (60, 150), cv2.FONT_HERSHEY_COMPLEX, (0.7), (0, 255, 255), 2)
         cv2.putText(frame, "woman counted: " + str(count_woman), (60, 180), cv2.FONT_HERSHEY_COMPLEX, (0.7), (255, 0, 255), 2)
-        cv2.putText(frame, "Advertisement: " + str(ad_product), (800, 60), cv2.FONT_HERSHEY_COMPLEX, (0.6), (0, 0, 0), 2)
-        cv2.putText(frame, "FPS: " + str(int(fps)), (800, 600), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
+        cv2.putText(frame, "Advertisement: " + str(ad_product), (800, 60), cv2.FONT_HERSHEY_COMPLEX, (0.6), (0, 255, 0), 2)
+        cv2.putText(frame, "FPS: " + str(int(fps)), (1000, 600), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 0, 0), 2)
 
 
         ret, buffer = cv2.imencode('.jpg', frame)
