@@ -87,7 +87,7 @@ def probability(data_res):
     # Menggunakan metode random.choices untuk melakukan randomisasi dengan mempertimbangkan peluang kemunculan
     recommended_products = random.choices(products, probabilities, k=1)
 
-    product = data.loc[data['product_id'] == recommended_products[0]]
+    product = data_res.loc[data_res['product_id'] == recommended_products[0]]
     prod_name = product['product_name'].values[0]
 
     return prod_name
@@ -100,8 +100,9 @@ def randomAd(max_class):
     if max_class == 4:
         random_product = data['product_id'].tolist()
         recommended_products = random.choice(random_product)
-
         product = data.loc[data['product_id'] == recommended_products[0]]
+        product_name = product['product_name'].values[0]
+
     elif max_class == 5:
         result = data.loc[data['class'] == 0]
         result2 = data.loc[data['class'] == 1]
