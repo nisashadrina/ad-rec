@@ -143,6 +143,8 @@ def maxCondition(array):
 def produceVideo():
     global VIDEO_PATH, model, AREA, CLASS_LIST, START_TIME, TIME_TO_RESET, data
     global boy_detected, girl_detected, man_detected, woman_detected
+    fps = 0
+    prev_time = time.time()
 
     # Inisialisasi video
     cap = cv2.VideoCapture(VIDEO_PATH)
