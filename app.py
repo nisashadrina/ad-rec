@@ -102,15 +102,6 @@ def randomAd(max_class):
         recommended_products = random.choice(random_product)
         product = data.loc[data['product_id'] == recommended_products[0]]
         product_name = product['product_name'].values[0]
-
-    elif max_class == 4:
-        result = data.loc[data['class'] == 0]
-        result2 = data.loc[data['class'] == 1]
-
-        combined_result = pd.concat([result, result2])
-        
-        product_name = probability(combined_result)
-
     else:
         result = data.loc[data['class'] == max_class]
         product_name = probability(result)        
@@ -129,12 +120,10 @@ def maxCondition(array):
 
     max_class = argmax_unique(array)
 
-    if boy != 0 and girl == 0:
+    if boy != 0 and boy > girl:
         return 0
-    elif girl != 0 and boy == 0:
+    elif girl != 0 and boy < girl:
         return 1
-    elif boy != 0 and girl != 0:
-        return 4
     elif max_class is None:
         return 5
     else:
